@@ -26,7 +26,7 @@ SECRET_KEY = 'ct4qpz#i1%b%$b@m6axr$tn0(xf@w4*c01z6e8uz+wkv@m=h6y'
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['mysterious-ravine-86423','127.0.0.1']
+ALLOWED_HOSTS = ['mysterious-ravine-86423.herokuapp.com','127.0.0.1']
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
