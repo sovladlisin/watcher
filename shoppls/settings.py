@@ -25,7 +25,9 @@ SECRET_KEY = 'ct4qpz#i1%b%$b@m6axr$tn0(xf@w4*c01z6e8uz+wkv@m=h6y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['protected-anchorage-27311','127.0.0.1']
+
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 # Application definition
@@ -133,3 +135,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn")
 # STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"myApp/static")
 LOGIN_URL = '/myApp/user_login/'
+
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
