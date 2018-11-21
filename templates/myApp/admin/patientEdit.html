@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load widget_tweaks %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-patient-edit.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-popup.css' %}">
+    <script src= "{% static 'myApp/editPatient.js' %}"></script>
+    <script src= "{% static 'myApp/dataPicker.js' %}"></script>
+    <script src= "{% static 'myApp/popup.js' %}"></script>
+    <script src= "{% static 'myApp/highlight.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Marmelad" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Изменение записи</title>
+</head>
+<body>
+<div class="cd-popup" role="alert">
+            <div class="cd-popup-container">
+                <p>Вы уверены что хотите отвязать пациента от браслета</p>
+                <ul class="cd-buttons">
+                    <li><a href="{% url 'myApp:patientDelete' pk=current.pk %}">Да</a></li>
+                    <li><a class="no" href="#0">Нет</a></li>
+                </ul>
+                <a href="#0" class="cd-popup-close img-replace">Close</a>
+            </div> <!-- cd-popup-container -->
+        </div> <!-- cd-popup -->
+    <div class="container">
+
+
+        <div class="head">
+            <p>Редактирование пациента #{{ current.z_id }}</p>
+        </div>
+        <div class="block" style="margin: 0 auto 0 auto">
+            <form method="POST" class="form-add">
+                {% csrf_token %}
+                <div><p>{{ form.name.label }}:</p></div><div>{% render_field form.name %}</div>
+                <div><p>{{ form.surname.label }}:</p></div><div>{% render_field form.surname %}</div>
+                <div><p>{{ form.patronymic.label }}:</p></div><div>{% render_field form.patronymic %}</div>
+                <div><p>{{ form.age.label }}:</p></div><div>{% render_field form.age %}</div>
+                <div><p>{{ form.gender.label }}:</p></div><div>{% render_field form.gender %}</div>
+                <div><p>{{ form.wing.label }}:</p></div><div>{% render_field form.wing %}</div>
+                <div><p>{{ form.room.label }}:</p></div><div>{% render_field form.room %}</div>
+                <div><p>{{ form.cause.label }}:</p></div><div>{% render_field form.cause %}</div>
+
+                <div><button class="btn" type="submit" style="background-color: rgb(39,166,142);"><p>Сохранить</p></button></div>
+                <div><button class="btn" type="reset" style="background-color: rgb(255, 118, 82);"><a style="color: white;" href="{% url 'myApp:allPatientAdmin'%}">Отмена</a></button></div>
+                <div><button class="btn" id="popup" style="background-color:rgb(253,230,226);">
+                        <p style="color: rgb(152,114,109)">Отвязать</p>
+                </button></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

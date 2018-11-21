@@ -1,0 +1,10 @@
+{% if patient_unknown %}
+    {% for patient in patient_unknown %}
+        <div class="line">
+            <p> {{patient.z_id }}</p>
+            <p class="activate"><a href="{% url 'myApp:patientEdit' pk=patient.pk %}">Нажмите сюда чтобы привязать пациента к браслету</a></p>
+        </div>
+    {% endfor %}
+        {% else %}
+        <div class="blank"><p>Запросы на активацию отсутствуют</p></div>
+{% endif %}

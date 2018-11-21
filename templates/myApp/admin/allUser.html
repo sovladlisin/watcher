@@ -1,0 +1,84 @@
+{% extends "myApp/admin/baseAdmin.html" %}
+{% block title %}
+    <title>Список пользователей</title>
+{% endblock %}
+{% block content %}
+        <div class="text-line">
+            <p>Запросы на регистрацию</p>
+        </div>
+        <div class="fio">
+            <p>Логин</p>
+            <p>Имя</p>
+            <p>Фамилия</p>
+            <p>Почта</p>
+        </div>
+    {% if new_user_list %}
+    {% for new_user in new_user_list %}
+
+        <div class="line">
+            <p> {{new_user.user.username}}</p>
+            <p> {{new_user.name}}</p>
+            <p> {{new_user.surname}}</p>
+            <p> {{new_user.user.email}}</p>
+        </div>
+        <div class="hidden-line" id="exit"><p>СКРЫТЬ ПОЛНУЮ ИНФОРМАЦИЮ О ПОЛЬЗОВАТЕЛЕ</p></div>
+        <div class="info">
+            <div class="photo"></div>
+            <div class="credits">
+                <p>Фамилия: <span>{{new_user.surname}}</span></p>
+                <p>Имя: <span>{{new_user.name}}</span></p>
+                <p>Отчество: <span>{{new_user.patronymic}}</span></p>
+                <p>Логин: <span>{{new_user.user.username}}</span></p>
+                <p>Дата запроса на регистрацию: <span>{{new_user.user.date_joined}}</span></p>
+            </div>
+            <div class="btn-holder">
+                <button class="btn" style="background-color: rgb(39,166,142);">
+                    <a href="">Добавить</a>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+        {% else %}
+        <div class="blank"><p>Запросы на регистрацию отсутствуют</p></div>
+{% endif %}
+
+    <div class="text-line">
+            <p>Список пользователей</p>
+        </div>
+        <div class="fio">
+            <p>Логин</p>
+            <p>Имя</p>
+            <p>Фамилия</p>
+            <p>Почта</p>
+        </div>
+    {% if user_list %}
+    {% for user in user_list %}
+
+        <div class="line">
+            <p> {{user.user.username}}</p>
+            <p> {{user.name}}</p>
+            <p> {{user.surname}}</p>
+            <p> {{user.user.email}}</p>
+        </div>
+        <div class="hidden-line" id="exit"><p>СКРЫТЬ ПОЛНУЮ ИНФОРМАЦИЮ О ПОЛЬЗОВАТЕЛЕ</p></div>
+        <div class="info">
+            <div class="photo"></div>
+            <div class="credits">
+                <p>Фамилия: <span>{{user.surname}}</span></p>
+                <p>Имя: <span>{{user.name}}</span></p>
+                <p>Отчество: <span>{{user.patronymic}}</span></p>
+                <p>Логин: <span>{{user.user.username}}</span></p>
+                <p>Дата запроса на регистрацию: <span>{{user.user.date_joined}}</span></p>
+            </div>
+            <div class="btn-holder">
+                <button class="btn" style="background-color: rgb(39,166,142);">
+                    <a href="">Изменить</a>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+        {% else %}
+        <div class="blank"><p>В системе нет пользователей</p></div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-login.css' %}">
+    <script src= "{% static 'myApp/preload.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Marmelad" rel="stylesheet">
+    <title>Вход</title>
+</head>
+<body>
+    <div class="se-pre-con"></div>
+    <div class="container">
+        <div class="title">
+            <p>Авторизация</p>
+        </div>
+        <form method="post" action="{% url 'myApp:user_login' %}">
+                    {% csrf_token %}
+                    {# A more "HTML" way of creating the login form#}
+                    <div class="label-holder"><label for="username">Логин:</label></div>
+                    <input type="text" name="username" placeholder="Введите логин">
+                    <div class="label-holder"><label for="password">Пароль:</label></div>
+                    <input type="password" name="password" placeholder="Введите пароль">
+                    <button type="submit" name="" value="Login"><p>Войти в систему</p></button>
+        </form>
+        <div class="title">
+            <p>Нет учетной записи?</p>
+        </div>
+        <button style="background-color: rgb(255,98,88)"><a href="{% url 'myApp:register'%}">Регистрация</a></button>
+    </div>
+</body>
+</html>
+

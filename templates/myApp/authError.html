@@ -1,0 +1,25 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-login.css' %}">
+    <script src= "{% static 'myApp/preload.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Marmelad" rel="stylesheet">
+    <title>Ошибка аутентификации</title>
+</head>
+<body>
+    <div class="se-pre-con"></div>
+    <div class="container" style="height: 100px">
+        <div class="title-error"><p>Ошибка входа</p></div>
+        <p class="headline-error">Причина:</p>
+        <div class="causes" style="height: 52px;">
+            <p>&bull; Данный ресурс предназначен для администратора сети</p>
+        </div>
+        <div class="return"><a href="{% url 'myApp:listPatientUser' %}">Вернуться на главную страницу</a> </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends "myApp/user/baseUser.html" %}
+{% block title %}
+    <title>Вызовы</title>
+{% endblock %}
+{% block content %}
+
+{#        <div class="text-line">#}
+{#            <p>Фильтр</p>#}
+{#        </div>#}
+{#        <form method="get" style="background: rgb(253,230,226);">#}
+{#            <span>Фамилия пациента:</span>#}
+{#            {% render_field patient_filter.form.patient__surname class="form-control"%}#}
+{#            {% for choice in patient_filter.form.patient__wing %}#}
+{#                {{ choice.tag }} {{ choice.choice_label }}#}
+{#            {% endfor %}#}
+{#            <button type="submit">Поиск</button>#}
+{#        </form>#}
+{#        {% for patient in patient_filter.qs %}#}
+{#            <div class="line">#}
+{#            <p>{{patient.patient.surname}}</p>#}
+{#            <p>{{patient.patient.name}}</p>#}
+{#            <p>{{patient.patient.patronymic}}</p>#}
+{#            <p>{{patient.patient.room}}</p>#}
+{#            </div>#}
+{#            <div class="hidden-line"><p>СКРЫТЬ ПОЛНУЮ ИНФОРМАЦИЮ О ПАЦИЕНТЕ</p></div>#}
+{#            <div class="info">#}
+{#            <div class="photo"></div>#}
+{#            <div class="credits">#}
+{#                <p>Фамилия: <span>{{patient.patient.surname}}</span></p>#}
+{#                <p>Имя: <span>{{patient.patient.name}}</span></p>#}
+{#                <p>Отчество: <span>{{patient.patient.patronymic}}</span></p>#}
+{#                <p>Пол: <span>{{patient.patient.gender}}</span></p>#}
+{#                <p>Возраст: <span>{{patient.patient.age}}</span></p>#}
+{#                <p>Отдел/крыло: <span>{{patient.patient.wing.name}}</span></p>#}
+{#                <p>Палата: <span>{{patient.patient.room}}</span></p>#}
+{#                <p>Заболевание: <span>{{patient.patient.cause}}</span></p>#}
+{#            </div>#}
+{#            <div class="btn-holder">#}
+{#                <button class="btn" style="background-color: rgb(255, 118, 82);">#}
+{#                    <p>Ответить</p>#}
+{#                    <a href="">Ответить</a>#}
+{##}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% endfor %}#}
+        <div class="text-line">
+            <p>Поступившие вызовы</p>
+        </div>
+        <div class="fio">
+            <p>Фамилия</p>
+            <p>Имя</p>
+            <p>Отчество</p>
+            <p style="width: 120px">Палата</p>
+            <p style="width: 120px">Время вызова</p>
+        </div>
+    {% if patient_log %}
+        {% for patient in patient_log %}
+            <div class="line">
+                <p>{{patient.patient.surname}}</p>
+                <p>{{patient.patient.name}}</p>
+                <p>{{patient.patient.patronymic}}</p>
+                <p style="width: 120px"> {{patient.patient.room}}</p>
+                <p style="width: 120px"> {{patient.time_of_call|date:"H:i:s"}}</p>
+            </div>
+            <div class="hidden-line"><p>СКРЫТЬ ПОЛНУЮ ИНФОРМАЦИЮ О ПАЦИЕНТЕ</p></div>
+            <div class="info">
+            <div class="photo"></div>
+            <div class="credits">
+                <p>Фамилия: <span>{{patient.patient.surname}}</span></p>
+                <p>Имя: <span>{{patient.patient.name}}</span></p>
+                <p>Отчество: <span>{{patient.patient.patronymic}}</span></p>
+                <p>Пол: <span>{{patient.patient.gender}}</span></p>
+                <p>Дата рождения: <span>{{patient.patient.age|date:"d-m-Y"}}</span></p>
+                <p>Отдел/крыло: <span>{{patient.patient.wing.name}}</span></p>
+                <p>Палата: <span>{{patient.patient.room}}</span></p>
+                <p>Заболевание: <span>{{patient.patient.cause}}</span></p>
+            </div>
+            <div class="btn-holder">
+                <button class="btn" style="background-color: rgb(255, 118, 82);">
+{#                    <p>Ответить</p>#}
+                    <a href="{% url 'myApp:patientAnswer' pk=patient.pk %}">Ответить</a>
+
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="blank"><p>Вызовы отсутствуют</p></div>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+    {% if marker %}
+        <div class="footer" style="background-color: #35a785">
+            <p>&copy;"Смотритель" 2018</p>
+            <p>Контактная информация</p>
+            <p>Помощь</p>
+            <a href="{% url 'myApp:logPatientAdmin' %}">Версия администратора</a>
+        </div>
+    {% else %}
+         <div class="footer" style="background-color: #35a785">
+             <p style="width: 320px">&copy;"Смотритель" 2018</p>
+             <p style="width: 320px">Контактная информация</p>
+             <p style="width: 320px">Помощь</p>
+        </div>
+    {% endif %}
+{% endblock %}

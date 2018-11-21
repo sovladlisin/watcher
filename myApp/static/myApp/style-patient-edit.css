@@ -1,0 +1,132 @@
+.container{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 960px;
+    height: 488px;
+    overflow: auto;
+    background-color: white;
+}
+.title{
+    width: 500px;
+    height: 60px;
+    border-bottom: 2px solid;
+    border-color: rgb(152,114,109);
+    font-size: 20pt;
+    background-color: rgb(253,230,226);
+    color: rgb(152,114,109);
+    text-transform: uppercase;
+}
+.title p{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 500px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.head {
+    width: 960px;
+    height: 140px;
+    opacity: 1;
+    background-color: rgb(253,230,226);
+    border-bottom: 2px solid;
+    border-color: rgb(152,114,109);
+}
+.head p{
+    width: 960px;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30pt;
+    color: rgb(152,114,109);
+}
+.form-add div{
+    float: left;
+
+}
+.form-add input{
+    margin: 0;
+    padding: 0 10px;
+    font-size: 15pt;
+    width: 700px;
+    height: 37px;
+    border: none;
+    display: table-cell;
+}
+.form-add .title{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    height: 70px;
+    font-family: Marmelad sans-serif;
+    font-size: 17pt;
+    background-color: rgb(253,230,226);
+    text-transform: uppercase;
+    color: rgb(152, 114, 109);
+    text-align: center;
+}
+
+.form-add p{
+    /*float: left;*/
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+
+    font-size: 16pt;
+    background-color: rgb(253,238,231);
+    color: rgb(152, 114, 109);;
+    width: 240px;
+    height: 37px;
+}
+.form-add button.btn p,.form-add button.btn a{
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16pt;
+     width: 320px;
+    height: 50px;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    cursor: pointer;
+}
+.form-add button.btn p:hover,.form-add button.btn a:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+.form-add button.btn{
+    padding: 0;
+    margin: 0;
+    width: 320px;
+    height: 50px;
+    float: right;
+    border: none;
+    font-size: 15pt;
+    display: table-cell;
+
+}
+.form-add select{
+     margin: 0;
+    font-size: 15pt;
+    width: 720px;
+    height: 37px;
+    border: none;
+   display: table-cell;
+    padding: 0 6px;
+
+}
+
+

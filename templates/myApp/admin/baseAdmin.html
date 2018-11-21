@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-admin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-test.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/style-notification.css' %}">
+    <script src= "{% static 'myApp/highlight.js' %}"></script>
+    <script src= "{% static 'myApp/preload.js' %}"></script>
+    <script src= "{% static 'myApp/popuptest.js' %}"></script>
+    <script src= "{% static 'myApp/activationUpdater.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Marmelad" rel="stylesheet">
+    {% block title %}{% endblock %}
+</head>
+<body><div class="se-pre-con"></div>
+<div class="main-title"><p>- СМОТРИТЕЛЬ -</p></div>
+<div class="logo"></div>
+<div class="block" style="margin-top: -70px">
+        <div class="head" >
+            <p>Панель администрации</p>
+        </div>
+{#        <div class="hidden-head"><p>Скрыть меню навигации</p></div>#}
+        <div class="head-menu">
+            <a id="notification-admin-patients" href="{% url 'myApp:logPatientAdmin' %}">Активация пациентов</a>
+            <a href="{% url 'myApp:allPatientAdmin' %}">Список пациентов</a>
+            <a id="notification-admin-users" href="{% url 'myApp:allUserAdmin' %}">Список пользователей</a>
+            <a href="">Личный кабинет</a>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+        <div class="footer">
+            <p>&copy;"Смотритель" 2018</p>
+            <p>Контактная информация</p>
+            <p>Помощь</p>
+            <a href="{% url 'myApp:listPatientUser' %}">Версия пользователя</a>
+        </div>
+</div>
+
+</body>
+</html>

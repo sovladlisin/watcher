@@ -1,0 +1,45 @@
+#notification-user,#notification-admin-patients,#notification-admin-users{
+    position: relative;
+}
+
+#notification-user::after, #notification-admin-patients::after, #notification-admin-users::after {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-family: 'Marmelad', sans-serif;
+}
+
+#notification-user::after, #notification-admin-patients::after, #notification-admin-users::after {
+    font-size: 0.7em;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 5px 8px;
+    line-height: 100%;
+    border: 2px #fff solid;
+    border-radius: 60px;
+    background-color: #fc7169;
+    opacity: 0;
+    content: attr(data-count);
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    transition: transform, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+
+#notification-user.show-count::after{
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 1;
+}
+#notification-admin-patients.show-count::after{
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 1;
+}
+#notification-admin-users.show-count::after{
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 1;
+}

@@ -1,0 +1,66 @@
+.hidden-head{
+    height: 80px;
+    /*display: none;*/
+    margin-top: -80px;
+    background-color: rgb(255,98,88);
+    width: 960px;
+    opacity: 1;
+    overflow: auto;
+    cursor: pointer;
+}
+
+.hidden-head p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    height: 80px;
+    width: 960px;
+    color: white;
+    font-size: 30pt;
+}
+.head-menu{
+    /*display: none;*/
+    width: 960px;
+    background: white;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid;
+    border-color: rgb(208, 83, 73);
+}
+
+.head-menu a{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 240px;
+    height: 50px;
+    margin: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 127, 130);
+    transition: 0.5s;
+}
+.head-menu a:hover{
+    background-color:  rgb(208, 83, 73);
+}
+.head {
+    width: 960px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+    background-color: rgb(255,98,88);
+}
+.head p{
+    width: 960px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30pt;
+    color: white;
+}

@@ -1,0 +1,71 @@
+{% extends "myApp/admin/baseAdmin.html" %}
+{% block title %}
+    <title>Активация</title>
+{% endblock %}
+{% block content %}
+        <div class="text-line">
+            <p>Активация пациентов</p>
+        </div>
+        <div class="fio">
+            <p>Номер браслета</p>
+            <p class="activate">Привязка браслета к пациенту</p>
+        </div>
+    <div id="hehe">
+ {% if patient_unknown %}
+    {% for patient in patient_unknown %}
+        <div class="line">
+            <p> {{patient.z_id }}</p>
+            <p class="activate"><a href="{% url 'myApp:patientEdit' pk=patient.pk %}">Нажмите сюда чтобы привязать пациента к браслету</a></p>
+        </div>
+    {% endfor %}
+        {% else %}
+        <div class="blank"><p>Запросы на активацию отсутствуют</p></div>
+{% endif %}
+    </div>
+
+        <div class="text-line">
+            <p>Поступившие вызовы</p>
+        </div>
+        <div class="fio">
+            <p>Фамилия</p>
+            <p>Имя</p>
+            <p>Отчество</p>
+            <p style="width: 120px">Палата</p>
+            <p style="width: 120px">Время вызова</p>
+        </div>
+    {% if patient_log %}
+
+        {% for patient in patient_log %}
+            <div class="line">
+                <p> {{patient.patient.z_id }} - {{patient.patient.surname}}</p>
+                <p> {{patient.patient.name}}</p>
+                <p> {{patient.patient.patronymic}}</p>
+                <p style="width: 120px"> {{patient.patient.room}}</p>
+                <p style="width: 120px"> {{patient.time_of_call|date:"H:i:s"}}</p>
+            </div>
+            <div class="hidden-line"><p>СКРЫТЬ ПОЛНУЮ ИНФОРМАЦИЮ О ПАЦИЕНТЕ</p></div>
+            <div class="info">
+            <div class="photo"></div>
+            <div class="credits">
+                <p>Фамилия: <span>{{patient.patient.surname}}</span></p>
+                <p>Имя: <span>{{patient.patient.name}}</span></p>
+                <p>Отчество: <span>{{patient.patient.patronymic}}</span></p>
+                <p>Пол: <span>{{patient.patient.gender}}</span></p>
+                <p>Дата рождения: <span>{{patient.patient.age|date:"d-m-Y"}}</span></p>
+                <p>Отдел/крыло: <span>{{patient.patient.wing.name}}</span></p>
+                <p>Палата: <span>{{patient.patient.room}}</span></p>
+                <p>Заболевание: <span>{{patient.patient.cause}}</span></p>
+                <p>Время вызова: <span>{{patient.time_of_call|date:"d-m-Y H:i:s"}}</span></p>
+            </div>
+            <div class="btn-holder">
+                <button class="btn" style="background-color: rgb(255, 118, 82);">
+{#                    <p>Ответить</p>#}
+                    <a href="{% url 'myApp:patientAnswer' pk=patient.pk %}">Ответить</a>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+         {% else %}
+        <div class="blank"><p>Вызовы отсутствуют</p></div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "myApp/admin/baseAdmin.html" %}
+{% block title %}
+    <title>Список пациентов</title>
+{% endblock %}
+{% block content %}
+        <div class="text-line">
+            <p>Список пациентов</p>
+        </div>
+        <div class="fio">
+            <p style="width: 120px">№ Браслета</p>
+            <p>Фамилия</p>
+            <p>Имя</p>
+            <p>Отчество</p>
+            <p style="width: 120px">Палата</p>
+        </div>
+    {% if patient_list %}
+    {% for patient in patient_list %}
+
+        <div class="line">
+            <p style="width: 120px">{{patient.z_id }}</p>
+            <p> {{patient.surname}}</p>
+            <p> {{patient.name}}</p>
+            <p> {{patient.patronymic}}</p>
+            <p style="width: 120px"> {{patient.room}}</p>
+        </div>
+        <div class="hidden-line" id="exit"><p>СКРЫТЬ ПОЛНУЮ ИНФОРМАЦИЮ О ПАЦИЕНТЕ</p></div>
+        <div class="info">
+            <div class="photo"></div>
+            <div class="credits">
+                <p>Фамилия: <span>{{patient.surname}}</span></p>
+                <p>Имя: <span>{{patient.name}}</span></p>
+                <p>Отчество: <span>{{patient.patronymic}}</span></p>
+                <p>Пол: <span>{{patient.gender}}</span></p>
+                <p>Дата рождения: <span>{{patient.age|date:"d-m-Y"}}</span></p>
+                <p>Отдел/крыло: <span>{{patient.wing.name}}</span></p>
+                <p>Палата: <span>{{patient.room}}</span></p>
+                <p>Заболевание: <span>{{patient.cause}}</span></p>
+            </div>
+            <div class="btn-holder">
+                <button class="btn" style="background-color: rgb(39,166,142);">
+{#                    <p>Изменить</p>#}
+                    <a href="{% url 'myApp:patientEdit' pk=patient.pk %}">Изменить</a>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+        {% else %}
+        <div class="blank"><p>В базе нет пациентов</p></div>
+{% endif %}
+{% endblock %}
